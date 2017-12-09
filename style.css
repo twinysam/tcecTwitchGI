@@ -1,0 +1,211 @@
+body {
+	color: white;
+	background-color: #444444;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.overlay {
+	width: 1920px;
+	height: 1080px;
+	margin: 0;
+	background-image: url(background.png);
+	background-repeat: repeat;
+	background-size: 25%;
+	/*-webkit-animation: 100s scroll infinite linear;
+	-moz-animation: 100s scroll infinite linear;
+	-o-animation: 100s scroll infinite linear;
+	-ms-animation: 100s scroll infinite linear;*/
+	animation: 100s scroll infinite linear;
+	top: 0;
+	left: 0;
+}
+
+/*@-webkit-keyframes scroll {
+	100% {
+		background-position: 0px -3000px;
+	}
+}
+
+@-moz-keyframes scroll {
+	100% {
+		background-position: 0px -3000px;
+	}
+}
+
+@-o-keyframes scroll {
+	100% {
+		background-position: 0px -3000px;
+	}
+}
+
+@-ms-keyframes scroll {
+	100% {
+		background-position: 0px -3000px;
+	}
+}*/
+
+@keyframes scroll {
+	100% {
+		background-position: 1500px -3000px;
+	}
+}
+
+.top_bar {
+	position: relative;
+	width: 100%;
+	height: 5vw;
+	background-color: #121212;
+	margin: 0;
+}
+
+.top_bar img {
+	position: absolute;
+	top: 0;
+	right: 125px;
+	z-index: 1;
+	width: 370px;
+}
+
+ul#newsTicker {
+	height: 5vw;
+}
+
+ul#newsTicker li {
+	color: #ffb045;
+	font-size: 3rem;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	/*text-transform: uppercase;*/
+}
+
+.game_container {
+	position: relative;
+	margin-top: 40px;
+}
+
+.clear {
+	clear: both;
+}
+
+.board_area {
+	position: relative;
+	margin-left: 50px;
+	width: 800px;
+	float: left;
+}
+
+.player {
+	position: relative;
+	min-height: 60px;
+	width: 100%;
+}
+
+.name {
+	position: relative;
+	height: 60px;
+	font-size: 3rem;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.name span {
+	position: absolute;
+	bottom: -0.5rem;
+	left: 0;
+}
+
+.clock {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 300px;
+	height: 60px;
+	font-family: 'Roboto Mono', monospace;
+	text-align: center;
+	font-size: 2.4rem;
+	letter-spacing: 0.5rem;
+}
+
+.black {
+	background-color: #000;
+	color: #fff;
+}
+
+.white {
+	background-color: #fff;
+	color: #000;
+}
+
+.player.turn {
+	background-color: #317b46;
+}
+
+.player.turn .clock {
+	background-color: #1bb246;
+}
+
+.board {
+	width: 800px;
+	height: 800px;
+	background-color: #222;
+	background-image: url(board_fixed.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.data_column {
+	float: left;
+	margin-top: 60px;
+	height: 800px;
+	width: 400px;
+	background-color: #5a5a5a;
+}
+
+.eval {
+	position: relative;
+	width: 100%;
+	height: 100px;
+	font-size: 6rem;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 100;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.info {
+	position: relative;
+	min-height: 300px;
+}
+
+.info ul {
+	list-style: none;
+}
+
+.info ul li {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	font-size: 2rem;
+}
+
+.info ul li data {
+	font-family: 'Roboto Mono', monospace;
+	font-size: 3rem;
+}
+
+.info ul li span {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
+}
+
+.url_bottom {
+	position: absolute;
+	bottom: 0;
+	right: 25px;
+	font-size: 30px;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 100;
+	letter-spacing: 8px;
+}

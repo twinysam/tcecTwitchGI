@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>TCEC Streaming Interface for Twitch</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Santiago Mendez">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto+Mono:100,300,400|Roboto:100,300,400,400i,500,700|Source+Code+Pro:100,300" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="pgn4web.js" type="text/javascript"></script>
+	<script src="engine.js" type="text/javascript"></script>
+	<script src="jquery.webticker.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#newsTicker').webTicker({
+				height: '75px',
+				duplicate: true,
+				rssfrequency: 30,
+				//rssurl:'ticker.xml',
+				startEmpty: false,
+				hoverpause: false,
+				transition: "linear"
+			});
+		});
+
+		"use strict";
+
+		// SetPgnUrl("live.pgn"); // enable this one for real live broadcast using the live-grab.sh script
+		SetPgnUrl("demoLiveGames.pgn"); // enable this one for live broadcast demo
+
+		// SetImagePath("images");
+		// SetImageType("png");
+		// SetHighlightOption(true); // true or false
+
+		SetGameSelectorOptions(null, true, 0, 0, 0, 15, 15, 3, 0); // (head, num, chEvent, chSite, chRound, chWhite, chBlack, chResult, chDate);
+
+		SetCommentsIntoMoveText(false);
+		SetCommentsOnSeparateLines(false);
+		SetAutoplayDelay(1000); // milliseconds
+		// SetAutostartAutoplay(false);
+		// SetAutoplayNextGame(false); // if set, move to the next game at the end of the current game during autoplay
+		SetInitialGame("Caruana"); // number of game to be shown at load, from 1 (default); values (keep the quotes) of "first", "last", "random" are accepted; other string values assumed as PGN search string
+		// SetInitialVariation(0); // number for the variation to be shown at load, 0 (default) for main variation
+
+		// make sure each time a game is loaded the last played move is shown
+		SetInitialHalfmove("end", true); // halfmove number to be shown at load, 0 (default) for start position; values (keep the quotes) of "start", "end", "random", "comment" (go to first comment or variation), "variation" (go to the first variation) are also accepted. Second parameter if true applies the setting to every selected game instead of startup only
+
+		SetShortcutKeysEnabled(true);
+
+		// set live broadcast; parameters are delay (refresh delay in minutes, 0 means no broadcast, default 0) alertFlag (if true, displays debug error messages, default false) demoFlag (if true starts broadcast demo mode, default false) stepFlag (if true, autoplays updates in steps, default false) endlessFlag (if true, keeps polling for new moves even after all games are finished)
+		// SetLiveBroadcast(1);  // enable this one for real live broadcast
+		SetLiveBroadcast(0.25, true, true); // enable this one for live broadcast demo
+
+		function customFunctionOnPgnGameLoad() {
+			customPgnHeaderTag("TimeControl", "GameTimeControl");
+		}
+
+		refreshDemo = true;
+		pieceFont = 'alpha';
+		bare = true;
+
+		// customShortcutKey_Shift_8 defined by engine.js
+		// customShortcutKey_Shift_9 defined by engine.js
+		// customShortcutKey_Shift_0 defined by engine.js
+
+	</script>
+
+</head>
+
+<body>
+	<div class="overlay">
+		<div class="top_bar">
+		<img src="logo_tcec10.png" alt="TCEC 10">
+			<div class="ticker">
+				<!-- Here go the updates for the ticker -->
+				<ul id="newsTicker">
+					<li>TCEC 10 Rapid Tournament &bull;</li>
+					<li>All of this and more is Cato's fault. &bull;</li>
+					<li>Next game: Komodo vs Gull &bull;</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="game_container">
+			<div class="board_area">
+				<div class="player">
+					<div class="name">
+						<span>Houdini 6.02</span>
+					</div>
+					<div class="clock black">00:53:45</div>
+				</div>
+				<div class="board">
+
+				</div>
+				<div class="player">
+					<div class="name">
+						<span>Stockfish 051117</span>
+					</div>
+					<div class="clock white">01:04:00</div>
+				</div>
+			</div>
+			<div class="data_column">
+				<div class="black_data">
+					<div class="eval black">
+						<span>0.44</span>
+					</div>
+					<div class="info">
+						<ul>
+							<li>depth <data value="42">42</data><span itemtype="unit"> ply</span></li>
+							<li>speed <data value="76389">76389</data><span itemtype="unit"> kn/s</span></li>
+							<li>nodes <data value="3064.9">3064.9</data><span itemtype="unit"> m</span></li>
+							<li>tb hits <data value="30320.9">30320.9</data><span itemtype="unit"> k</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="white_data">
+					<div class="eval white">
+						<span>0.75</span>
+					</div>
+					<div class="info">
+						<ul>
+							<li>depth <data value="42">42</data><span itemtype="unit"> ply</span></li>
+							<li>speed <data value="76389">76389</data><span itemtype="unit"> kn/s</span></li>
+							<li>nodes <data value="3064.9">3064.9</data><span itemtype="unit"> m</span></li>
+							<li>tb hits <data value="30320.9">30320.9</data><span itemtype="unit"> k</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="url_bottom">
+				tcec.chessdom.com
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+
+</body>
+
+</html>
